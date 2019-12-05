@@ -14,7 +14,7 @@ namespace EventBrightApplication.Models
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Event Type Name")]
+        [Display(Name = "Event Type")]
         public virtual string TypeName { get; set; }
 
         [StringLength(150)]

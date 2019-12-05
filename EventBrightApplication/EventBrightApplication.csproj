@@ -176,6 +176,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912051909464_Update1.cs" />
+    <Compile Include="Migrations\201912051909464_Update1.Designer.cs">
+      <DependentUpon>201912051909464_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051952296_update2.cs" />
+    <Compile Include="Migrations\201912051952296_update2.Designer.cs">
+      <DependentUpon>201912051952296_update2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912052222363_update3.cs" />
+    <Compile Include="Migrations\201912052222363_update3.Designer.cs">
+      <DependentUpon>201912052222363_update3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912052248583_update4.cs" />
+    <Compile Include="Migrations\201912052248583_update4.Designer.cs">
+      <DependentUpon>201912052248583_update4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventBrightApplicationDB.cs" />
@@ -277,6 +294,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912051909464_Update1.resx">
+      <DependentUpon>201912051909464_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051952296_update2.resx">
+      <DependentUpon>201912051952296_update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912052222363_update3.resx">
+      <DependentUpon>201912052222363_update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912052248583_update4.resx">
+      <DependentUpon>201912052248583_update4.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

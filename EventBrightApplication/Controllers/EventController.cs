@@ -38,6 +38,8 @@ namespace EventBrightApplication.Controllers
         // GET: Event/Create
         public ActionResult Create()
         {
+            ViewBag.EventType= new SelectList(db.EventTypes, "TypeId", "TypeName");
+
             return View();
         }
 
@@ -55,7 +57,7 @@ namespace EventBrightApplication.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.EventType = new SelectList(db.EventTypes, "TypeId", "TypeName", @event.TypeId);
             return View(@event);
         }
 
@@ -71,6 +73,9 @@ namespace EventBrightApplication.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.EventType = new SelectList(db.EventTypes, "TypeId", "TypeName", @event.TypeId);
+            
             return View(@event);
         }
 

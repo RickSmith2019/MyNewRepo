@@ -10,10 +10,9 @@ namespace EventBrightApplication.Models
     {
         [Key]
         public virtual int EventId { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        [Display(Name ="Event Type")]
+      
+        [Display(Name = "Event Type")]
+        public virtual int TypeId { get; set; }        
         public virtual EventType TypeName { get; set; }
 
         [Required]
@@ -45,10 +44,7 @@ namespace EventBrightApplication.Models
         public virtual DateTime EndTime { get; set; }
 
         [Required]
-        public virtual string Location { get; set; }
-
-        [Display(Name = "Event Type Id")]
-        public virtual EventType TypeId { get; set; }
+        public virtual string Location { get; set; }        
 
         [Required]
         [Display(Name = "Organizer Name")]
@@ -77,7 +73,7 @@ namespace EventBrightApplication.Models
             
             if (EndDate < StartDate)
             {
-                yield return (new ValidationResult("End Date must be greater then the Start Date."));
+                yield return (new ValidationResult("End Date must be greater then the Start Date.", new[] { "EndDate" }));
             }            
         }
     }
