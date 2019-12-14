@@ -17,9 +17,10 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.TypeId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-10 form-inline">
             @Html.DropDownList("EventType", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })  
+            <button>@Html.ActionLink("Create a new event type", "Create", "EventType")</button>
         </div>
     </div>
     

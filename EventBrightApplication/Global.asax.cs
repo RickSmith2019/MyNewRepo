@@ -14,7 +14,9 @@ namespace EventBrightApplication
     {
         protected void Application_Start()
         {
+
             Database.SetInitializer<EventBrightApplicationDB>(new DropCreateDatabaseIfModelChanges<EventBrightApplicationDB>());
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

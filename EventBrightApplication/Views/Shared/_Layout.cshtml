@@ -9,29 +9,29 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">        
-            
-            <div class="navbar-header">
-                
-                @Html.ActionLink("Eventbrite", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-       
+    <div class="navbar navbar-inverse navbar-fixed-top" style="padding-right:20px;">
+
+        <div class="navbar-header">
+
+            @Html.ActionLink("Eventbrite", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>                
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+
     </div>
     <div class="container body-content">
         @RenderBody()
-        <br /><br /><br /><br /><br />
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Eventbrite</p>
-        </footer>
+
     </div>
+    <hr />
+    <footer>
+        <p style="text-align:center;">&copy; @DateTime.Now.Year - Eventbrite</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

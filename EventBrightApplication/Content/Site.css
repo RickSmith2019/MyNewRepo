@@ -40,7 +40,6 @@ textarea {
     /*content: "";*/
     background-image: url('Images/Event1.jpg');
     height: 500px;
-    position:fixed;
     top: 0;    
     left: 0;
     right: 0;
@@ -48,3 +47,24 @@ textarea {
     margin-left:0;
     margin-right:0;
 }
+
+.form-inline {
+    display: flex;
+    flex-flow: nowrap;
+  
+}
+.link-color {
+    color: midnightblue
+}
+
+    .link-color:active {
+        color:cornflowerblue
+    }
+
+    .link-color:link {
+        color:indianred
+    }
+
+    .link-color:visited {
+        color:lightpink
+    }

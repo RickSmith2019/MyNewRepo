@@ -1,0 +1,32 @@
+﻿@model EventBrightApplication.Models.OrderViewModel
+@{
+    ViewBag.Title = "Tickets Ordered";
+}
+
+<h2>Tickets Purchased</h2>
+<center>
+    <div>
+        <table>
+            <tr style="background-color:cornflowerblue">
+                <th style="width:400em; padding-bottom:3px;padding-left:5px;" >Title</th>
+                <th style="width:200em; text-align:center;padding-bottom:3px;">Date Ordered</th>
+                <th style="width:200em; text-align:center;padding-bottom:3px;">Number of Tickets</th>
+                <th style="width:200em; text-align:center;padding-bottom:3px;">Order Status</th>
+            </tr>
+            <tr>
+                @foreach (var item in Model.OrderItems)
+                {
+                    <td style="padding-left:3px;">@item.Title</td>
+                    <td style="text-align:center;">@item.DateOrdered</td>
+                    <td style="text-align:center;">@item.NumberOfTickets</td>
+                    <td style="text-align:center;">@item.Status</td>
+                    <td><button><a href="#">Remove</a></button></td>
+                }
+            <tr>
+                <td>Total Tickets</td>
+                <td>@Model.TicketTotal</td>
+            </tr>
+        </table>
+    </div>
+</center>
+

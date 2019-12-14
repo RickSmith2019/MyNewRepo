@@ -3,7 +3,7 @@ namespace EventBrightApplication.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Update1 : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -26,11 +26,11 @@ namespace EventBrightApplication.Migrations
                         City = c.String(nullable: false),
                         State = c.String(nullable: false),
                         TypeId_TypeId = c.Int(),
-                        TypeName_TypeId = c.Int(nullable: false),
+                        TypeName_TypeId = c.Int(),
                     })
                 .PrimaryKey(t => t.EventId)
                 .ForeignKey("dbo.EventTypes", t => t.TypeId_TypeId)
-                .ForeignKey("dbo.EventTypes", t => t.TypeName_TypeId, cascadeDelete: true)
+                .ForeignKey("dbo.EventTypes", t => t.TypeName_TypeId)
                 .Index(t => t.TypeId_TypeId)
                 .Index(t => t.TypeName_TypeId);
             
@@ -49,22 +49,24 @@ namespace EventBrightApplication.Migrations
                 c => new
                     {
                         OrderNumber = c.Int(nullable: false, identity: true),
+                        OrderId = c.String(),
                         NumberOfTickets = c.Int(nullable: false),
                         DateOrdered = c.DateTime(nullable: false),
-                        EventId_EventId = c.Int(nullable: false),
+                        EventId = c.Int(nullable: false),
+                        Status = c.String(),
                     })
                 .PrimaryKey(t => t.OrderNumber)
-                .ForeignKey("dbo.Events", t => t.EventId_EventId, cascadeDelete: true)
-                .Index(t => t.EventId_EventId);
+                .ForeignKey("dbo.Events", t => t.EventId, cascadeDelete: true)
+                .Index(t => t.EventId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Orders", "EventId_EventId", "dbo.Events");
+            DropForeignKey("dbo.Orders", "EventId", "dbo.Events");
             DropForeignKey("dbo.Events", "TypeName_TypeId", "dbo.EventTypes");
             DropForeignKey("dbo.Events", "TypeId_TypeId", "dbo.EventTypes");
-            DropIndex("dbo.Orders", new[] { "EventId_EventId" });
+            DropIndex("dbo.Orders", new[] { "EventId" });
             DropIndex("dbo.Events", new[] { "TypeName_TypeId" });
             DropIndex("dbo.Events", new[] { "TypeId_TypeId" });
             DropTable("dbo.Orders");

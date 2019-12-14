@@ -1,0 +1,34 @@
+﻿@model IEnumerable<EventBrightApplication.Models.Event>
+
+<div style="background-color:cornflowerblue; color:white;">             
+    <table>
+        <tr>
+            <th colspan="4" style="text-align:center;padding:10px;">Last Minute Deals</th>
+        </tr>
+        <tr>
+            <th style="width:200px; text-align:center;padding-bottom:3px;padding-left:5px;">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th style="width:100px; text-align:center;padding-bottom:3px;">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th style="width:100px; text-align:center;padding-bottom:3px;">
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th style="width:100px; text-align:center;padding-bottom:3px;">
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="link-color" style="padding-left:5px"> @Html.ActionLink(item.Title, "Details", "Event", new { id = item.EventId }, null)</td>
+                <td style="text-align:center;">@item.StartDate</td>
+                <td style="text-align:center;">@item.City</td>
+                <td style="text-align:center;">@item.State</td>
+            </tr>           
+        }
+        </table>
+</div>
+  
+

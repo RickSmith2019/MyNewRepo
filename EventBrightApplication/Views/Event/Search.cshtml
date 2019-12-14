@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+<center>
+    <img src="~/Content/Images/compass-1342.png" width="350" />
+    <br />
+    <h1>Find an event near you!</h1>
+    <br /><br />
+    <div class="find">
+
+        <div class="find_body" style="padding:0px 20px 30px 20px;">
+            @using (Ajax.BeginForm("Find", "Event", new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET",
+                OnFailure = "searchFailed",
+                UpdateTargetId = "searchresults"
+            }))
+            {
+                <input type="text" name="type" value="Event or Event Type" />
+                <input type="text" name="location" value="Location, City, State" />
+                <input type="submit" value="Search" />
+            }
+            <div id="searchresults"></div>
+        </div>
+    </div>
+</center>
+
+@section Scripts{
+    <script src="~/Scripts/Apps/home_index.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+
+

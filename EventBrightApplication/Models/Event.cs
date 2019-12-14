@@ -12,7 +12,7 @@ namespace EventBrightApplication.Models
         public virtual int EventId { get; set; }
       
         [Display(Name = "Event Type")]
-        public virtual int TypeId { get; set; }        
+        public virtual EventType TypeId { get; set; }        
         public virtual EventType TypeName { get; set; }
 
         [Required]
@@ -23,22 +23,26 @@ namespace EventBrightApplication.Models
         public virtual string Description { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         [Display(Name = "Start Date")]
         [greaterThanNow(ErrorMessage = "Date must be greater or equal to today's date.")]
         public virtual DateTime StartDate { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:hh:mm tt}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Time)]
         [Display(Name = "Start Time")]
         public virtual DateTime StartTime { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         [Display(Name = "End Date")]
         public virtual DateTime EndDate { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:hh:mm tt}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Time)]
         [Display(Name = "End Time")]
         public virtual DateTime EndTime { get; set; }

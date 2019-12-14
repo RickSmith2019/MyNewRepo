@@ -1,18 +1,67 @@
 ﻿@{
     ViewBag.Title = "Eventbrite";
 }
-    <div class="header-blur">
-        <br /><br /><br />
-        <div class=" background-pic">
-            <br /><br /><br /><br /><br /><br /><br /><br />
-            <h3 style="color:lightgray;margin-left:30px;font-size:2em;font-weight:700">Made for</h3>
-            <h1 style="color:white;margin-left:30px;font-size:5em;font-weight:700">those who do</h1>
+<div class="header-blur">
+    <br /><br /><br />
+    <div class=" background-pic">
+        <br /><br /><br /><br /><br /><br /><br /><br />
+        <h3 style="color:lightgray;margin-left:30px;font-size:2em;font-weight:700">Made for</h3>
+        <h1 style="color:white;margin-left:30px;font-size:5em;font-weight:700">those who do</h1>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<body>
+    <center>
+        <div class="find" style="float:left; background-color:lightgray;">
+            <div style="padding:20px 10px 10px 0px;">
+                @Html.ActionLink("Find an Event", "Search", "Event")
+            </div>
+            <div class="find_body" style="padding:0px 10px 30px 10px" >
+                @using (Ajax.BeginForm("Find", "Event", new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "GET",
+                    OnFailure = "searchFailed",
+                    UpdateTargetId = "searchresults"
+                }))
+                {
+                    <input type="text" name="type" value="Event or Event Type" style="padding-right:3px;" />
+                    <input type="text" name="location" value="Location, City, State" style="padding-right:3px;" />
+                    <input type="submit" value="Search" style="padding-right:3px;" />               
+                }
+                <div id="searchresults"></div>
+            </div>
         </div>
+    </center>
+   
+<center>
+    <div style="float:right;">
+        <table>
+            <tr>
+                <th id="dailydeal">
+                    @Ajax.ActionLink("Click here to see Last Minute Deals!",
+                        "DailyDeal",
+                        null,
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = "dailydeal",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "GET"
+                        },
+                        new { @class = "btn btn-primary" })
+                </th>
+            </tr>
+        </table>
     </div>
-    <div>
-        <!-- Insert Action links here-->
-        <button>Search</button>
-    </div>
-    <div>
-        <button>Click here to see Last Minute Deals!</button>
-    </div>
+</center>
+</body>
+
+
+@section Scripts{
+    <script src="~/Scripts/Apps/home_index.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<EventBrightApplication.Models.Event>
+
+<div id="searchresults" style="margin-top:10px;">
+    <table>
+        <tr style="background-color:cornflowerblue">
+            <th colspan="4" style="text-align:center;padding-bottom:3px;padding-left:5px;">
+                No Event Found
+            </th>
+           
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style=" border:1px solid cornflowerblue;">
+                <td style="padding-left:3px;"> @Html.ActionLink(item.Title, "Details", "Event", new { id = item.EventId }, null)</td>
+                <td style="text-align:center;">@item.StartDate</td>
+                <td style="text-align:center;">@item.City</td>
+                <td style="text-align:center;">@item.State</td>
+            </tr>
+
+        }
+    </table>
+</div>

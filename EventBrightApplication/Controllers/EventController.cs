@@ -10,16 +10,19 @@ using EventBrightApplication.Models;
 
 namespace EventBrightApplication.Controllers
 {
+    [Authorize]
     public class EventController : Controller
     {
         private EventBrightApplicationDB db = new EventBrightApplicationDB();
 
+        [AllowAnonymous]
         // GET: Event
         public ActionResult Index()
         {
             return View(db.Events.ToList());
         }
 
+        [AllowAnonymous]
         // GET: Event/Details/5
         public ActionResult Details(int? id)
         {
@@ -57,7 +60,7 @@ namespace EventBrightApplication.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EventType = new SelectList(db.EventTypes, "TypeId", "TypeName", @event.TypeId);
+
             return View(@event);
         }
 
@@ -75,7 +78,6 @@ namespace EventBrightApplication.Controllers
             }
 
             ViewBag.EventType = new SelectList(db.EventTypes, "TypeId", "TypeName", @event.TypeId);
-            
             return View(@event);
         }
 
@@ -129,5 +131,39 @@ namespace EventBrightApplication.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [AllowAnonymous]
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Find(string type, string location)
+        {
+            var events = GetEvents(type, location);
+            if (events == null)
+            {
+                return PartialView("_NoResult", events);
+            }
+            return PartialView("_Find", events);
+        }
+
+        [AllowAnonymous]
+        private List<Event> GetEvents(string searchtype, string searchlocation)
+        { 
+            return db.Events
+                .Where(e => e.Title.Contains(searchtype)
+                        || e.TypeName.TypeName.Contains(searchtype)
+                        || searchtype == null
+                        || searchtype == "Event or Event Type"
+                        && e.City.Contains(searchlocation)
+                        || e.Location.Contains(searchlocation)
+                        || e.State.Contains(searchlocation)
+                        || searchlocation == null
+                        || searchlocation == "Location, City, or State")
+                        .OrderBy(e => e.StartDate)
+                        .ToList();
+        }        
     }
 }
